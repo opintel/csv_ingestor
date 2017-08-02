@@ -1,7 +1,7 @@
-FROM python:3.5.3
+FROM ubuntu:16:10
 
 RUN apt-get update && \
-    apt-get install -y supervisor cron
+    apt-get install -y supervisor cron python3.6
 
 RUN mkdir -p /var/log/ingestor \
     && mkdir -p /data/ingestor
@@ -12,6 +12,7 @@ RUN python setup.py develop
 RUN pip install -r requirements.txt
 
 ADD ingest-celery.conf /etc/supervisor/conf.d/ingest-celery.conf
-RUN chmod 0600 /start.sh
+ADD start.sh /start.sh
+RUN chmod +x /start.sh
 
 ENTRYPOINT ["/start.sh"]
