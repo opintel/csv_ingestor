@@ -1,6 +1,6 @@
 # CSV Ingestor
 
-Recolecta los archivos CSV asociados a un recurso descargados de CKAN por medio de *Refineria* , extrae e inserta los primeros 150 registros y los envia al datastore.
+Recolector de archivos CSV asociados a un recurso CKAN descargados por medio de *Refineria* , extrae e inserta los primeros 150 registros y los envia al datastore.
 
 # Requerimientos
 

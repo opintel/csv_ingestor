@@ -1,1 +1,2 @@
+celery[redis]==4.1.0
 requests==2.18.2

@@ -1,0 +1,5 @@
+*.pyc
+.DS_Store
+test-data/
+csv_ingestor.egg-info/
+dist/
