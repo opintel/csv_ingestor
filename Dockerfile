@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 
 ADD ingest-celery.conf /etc/supervisor/conf.d/ingest-celery.conf
 
-ENTRYPOINT ['python', 'csv_ingestor/ingestor.py']
+ENTRYPOINT ["start.sh"]
