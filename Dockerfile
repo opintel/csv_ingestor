@@ -1,4 +1,4 @@
-FROM ubuntu:16:10
+FROM ubuntu:16.10
 
 RUN apt-get update && \
     apt-get install -y supervisor cron python3.6
@@ -8,6 +8,7 @@ RUN mkdir -p /var/log/ingestor \
 
 COPY . .
 
+RUN pip install setuptools
 RUN python setup.py develop
 RUN pip install -r requirements.txt
 
