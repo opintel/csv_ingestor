@@ -3,7 +3,8 @@ FROM python:3.5.3
 RUN apt-get update && \
     apt-get install -y supervisor cron
 
-RUN mkdir -p /var/log/ingestor/
+RUN mkdir -p /var/log/ingestor \
+    && mkdir -p /data/ingestor
 
 COPY . .
 

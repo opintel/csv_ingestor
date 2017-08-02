@@ -6,7 +6,7 @@ CSV_QUOTECHAR = os.environ.get('CSV_QUOTECHAR', '|')
 CSV_MAX_ROWS_TO_PREVIEW = os.environ.get('CSV_MAX_ROWS_TO_PREVIEW', 150)
 
 # CONFIGURACIONES DEL EXPLORADOR DE ARCHIVOS
-FILE_BASE_PATH = os.environ.get('FILE_BASE_PATH', '.')
+FILE_BASE_PATH = os.environ.get('FILE_BASE_PATH', '/data/ingestor')
 
 # CONFIGURACIONES DEL CLIENTE CKAN API
 CKAN_BASE_URL = os.environ.get('CKAN_BASE_URL', 'http://10.20.55.7/busca/')
