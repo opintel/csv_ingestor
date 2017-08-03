@@ -31,6 +31,9 @@ def ingest(file=None):
 
     csv_manager.process_file(path_file=file, id_resource=name)
 
+    if not csv_manager.response:
+        return {"error": "Error en la peticion, revisar logs celery"}
+
     return csv_manager.response.json()
 
 
