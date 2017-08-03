@@ -15,5 +15,6 @@ RUN pip3 install -r /csv_ingestor/requirements.txt
 ADD ingest-celery.conf /etc/supervisor/conf.d/ingest-celery.conf
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
+RUN which celery
 
 ENTRYPOINT ["/start.sh"]
