@@ -4,4 +4,4 @@ sudo service supervisor restart
 
 sudo supervisorctl reread
 
-python /csv_ingestor/ingestor.py
+python /csv_ingestor/csv_ingestor/ingestor.py
