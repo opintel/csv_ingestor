@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo touch /var/run/supervisor.sock
-sudo chmod 777 /var/run/supervisor.sock
-sudo service supervisor restart
+touch /var/run/supervisor.sock
+chmod 777 /var/run/supervisor.sock
+service supervisor restart
 
-sudo supervisorctl reread
+supervisorctl reread
 
 python3 /csv_ingestor/csv_ingestor/ingestor.py
