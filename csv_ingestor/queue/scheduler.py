@@ -25,13 +25,13 @@ def ingest(file=None):
     Crea una nueva tarea de ingesta
     en la cola de trabajo
     """
-    print("Estoy en la cola: {0}".format(file))
+    print("Procesando en la cola: {0}".format(file))
     csv_manager = CSVManager()
-    name = file.split('/')[-1]
+    name = file.split('/')[-1].replace('.csv', '')
 
     csv_manager.process_file(path_file=file, id_resource=name)
 
-    return csv_manager.response
+    return csv_manager.response.json()
 
 
 if __name__ == '__main__':

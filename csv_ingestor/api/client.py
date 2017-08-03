@@ -3,6 +3,7 @@ Clases con logica de cliente
 para el API de CKAN
 """
 import requests
+import json
 from csv_ingestor.conf import settings
 
 
@@ -30,24 +31,32 @@ class CkanClient:
 
     def _make_api_petition(self, id_resource=None, data=None, fields=None):
         data_post = {
-            'resource_id': id_resource,
-            'force': True,
-            'records': data,
-            'fields': fields
+            "resource_id": id_resource,
+            "force": True,
+            "records": data,
+            "fields": fields
         }
 
-        response = requests.post(
-            self.data_pusher_api_url,
-            data=data_post,
-            headers={
-                'Authorization': self.access_token
-            }
-        )
+        print("Post data")
+        try:
+            print(data_post)
+            response = requests.post(
+                self.data_pusher_api_url,
+                json=data_post,
+                headers={
+                    'Authorization': self.access_token
+                }
+            )
+        except Exception as othererror:
+            print(othererror)
+            return False
 
         try:
             response.raise_for_status()
         except Exception as error:
             print(error)
+            #print(response.text)
+            #print(response.request.body)
             return False
 
         if response.status_code != 200:

@@ -1,4 +1,5 @@
 import csv
+from slugify import slugify
 from csv_ingestor.conf import settings
 from csv_ingestor.api.client import CkanClient
 
@@ -32,22 +33,23 @@ class CSVManager:
                     self._set_headers(line=line)
 
                 if count > 0:
-                    data_store_line = self._line_to_datastore_field(line=line)
-                    self.lines.append(data_store_line)
+                    self._line_to_datastore_field(line=line)
 
                 count += 1
 
     def _line_to_datastore_field(self, line=None):
         aux_dict = {}
         for index in range(0, len(self.raw_fields)):
-            aux_dict[self.raw_fields[index]] = line[index]
+            aux_dict[self.raw_fields[index]['id']] = line[index]
 
         self.lines.append(aux_dict)
 
     def _set_headers(self, line=None):
-        self.raw_fields = line
+        # self.raw_fields = line
         for column in line:
-            self.fields.append({'id': column})
+            if column.strip():
+                self.fields.append({"id": slugify(column), "type": "text"})
+                self.raw_fields.append({"id": slugify(column), "type": "text"})
 
     def _send_to_datastore(self, id_resource=None):
         self.api_client.send_file_to_datapusher(

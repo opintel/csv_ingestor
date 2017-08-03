@@ -3,6 +3,7 @@ Sistema de ingesta para
 enviar datos al datapusher
 """
 import datetime
+import time
 from csv_ingestor.filemanager.explorer import FileExplorer
 
 
