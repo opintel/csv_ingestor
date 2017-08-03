@@ -1,7 +1,7 @@
-FROM ubuntu:16.10
+FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install -y supervisor cron python3.6 python3-pip
+    apt-get install -y supervisor cron python3 python3-pip
 
 RUN mkdir -p /var/log/ingestor \
     && mkdir -p /data/ingestor
@@ -9,7 +9,7 @@ RUN mkdir -p /var/log/ingestor \
 COPY . /csv_ingestor
 
 RUN pip3 install setuptools
-RUN cd /csv_ingestor && python3.6 /csv_ingestor/setup.py develop
+RUN cd /csv_ingestor && python3 /csv_ingestor/setup.py develop
 RUN pip3 install -r /csv_ingestor/requirements.txt
 
 ADD ingest-celery.conf /etc/supervisor/conf.d/ingest-celery.conf
